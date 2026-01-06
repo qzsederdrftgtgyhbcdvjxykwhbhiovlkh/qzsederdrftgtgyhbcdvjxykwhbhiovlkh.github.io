@@ -87,3 +87,13 @@ footer p {
     margin: 0;
 }
 
+/* 🎵 IMAGE AVEC SON — ANIMATION AU SURVOL */
+.image-son {
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.image-son:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
