@@ -110,6 +110,37 @@
 
 <body>
 
+const trails = document.querySelectorAll(".trail");
+
+let mouseX = 0;
+let mouseY = 0;
+
+// Position du curseur
+window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+let positions = Array.from(trails).map(() => ({ x: 0, y: 0 }));
+
+function animate() {
+    positions[0].x += (mouseX - positions[0].x) * 0.25;
+    positions[0].y += (mouseY - positions[0].y) * 0.25;
+
+    for (let i = 1; i < positions.length; i++) {
+        positions[i].x += (positions[i - 1].x - positions[i].x) * 0.25;
+        positions[i].y += (positions[i - 1].y - positions[i].y) * 0.25;
+    }
+
+    trails.forEach((trail, index) => {
+        trail.style.left = positions[index].x + "px";
+        trail.style.top = positions[index].y + "px";
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
 
   <nav>
     <ul class="menu">
